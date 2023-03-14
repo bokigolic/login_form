@@ -30,32 +30,70 @@ const RegistrationForm = () => {
   }
 
 
+  const handleSubmit = (e) => {
+    e.preventDefault()
+    console.log(firstName, lastName, email, password, confirmPassword);
+  }
+
   return (
     <div className="form">
       <div className="form-body">
         <div className="username">
           <label className="form__label" for="firstName">First Name </label>
-          <input className="form__input" onChange={handleChange} type="text" id="firstName" placeholder="First Name" />
+          <input className="form__input"
+            type="text"
+            id="firstName"
+            placeholder="First Name"
+            value={firstName}
+            onChange={handleChange}
+          />
         </div>
         <div className="lastname">
           <label className="form__label" for="lastName">Last Name </label>
-          <input type="text" name="" id="lastName" onChange={handleChange} className="form__input" placeholder="LastName" />
+          <input type="text"
+            name=""
+            id="lastName"
+            value={lastName}
+            onChange={handleChange}
+            className="form__input"
+            placeholder="LastName"
+          />
         </div>
         <div className="email">
           <label className="form__label" for="email">Email </label>
-          <input type="email" id="email" className="form__input" placeholder="Email" />
+          <input type="email"
+            className="form__input"
+            placeholder="Email"
+            id="email"
+            value={email}
+            onChange={handleChange}
+          />
         </div>
         <div className="password">
           <label className="form__label" for="password">Password </label>
-          <input className="form__input" onChange={handleChange} type="password" id="password" placeholder="Password" />
+          <input
+            className="form__input"
+            type="password"
+            id="password"
+            placeholder="Password"
+            value={password}
+            onChange={handleChange}
+          />
         </div>
         <div className="confirm-password">
-          <label className="form__label" for="confirmPassword">Confirm Password </label>
-          <input className="form__input" onChange={handleChange} type="password" id="confirmPassword" placeholder="Confirm Password" />
+          <label className="form__label"
+            for="confirmPassword">Confirm Password </label>
+          <input className="form__input"
+            type="password"
+            id="confirmPassword"
+            placeholder="Confirm Password"
+            onChange={handleChange}
+            value={confirmPassword}
+          />
         </div>
       </div>
       <div class="footer">
-        <button type="submit" class="btn">Register</button>
+        <button type="submit" onClick={handleSubmit} class="btn">Register</button>
       </div>
     </div>
   )
