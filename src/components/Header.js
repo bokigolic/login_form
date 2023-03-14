@@ -7,6 +7,7 @@ const Header = () => {
         <h3>Registration</h3>
       </div>
     </nav>
+    
   )
 }
 export default Header;
