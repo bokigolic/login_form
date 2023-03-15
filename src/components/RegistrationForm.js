@@ -32,8 +32,35 @@ function RegistrationForm() {
 
   const handleSubmit = (event) => {
     event.preventDefault(); // prevent default form submission behavior
-    console.log(firstName, lastName, email, password, confirmPassword);
-    // add code to save user data to database
+
+    // create a new user object with the form data
+    const newUser = {
+      firstName,
+      lastName,
+      email,
+      password
+    };
+
+    // get a reference to the "users" collection in the database
+    const usersRef = ref(database, 'users');
+
+    // push the new user object to the "users" collection
+    push(usersRef, newUser)
+      .then((newUserRef) => {
+        // update the user object with its unique ID from the database
+        const userID = newUserRef.key;
+        update(child(usersRef, userID), { id: userID });
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+
+    // reset the form inputs
+    setFirstName("");
+    setLastName("");
+    setEmail("");
+    setPassword("");
+    setConfirmPassword("");
   }
 
   return (
